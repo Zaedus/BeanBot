@@ -38,7 +38,7 @@ async def get_role(ctx, name):
 
     await ctx.author.add_roles(role)
     await ctx.author.send(f"You have been given the {role.name} role in {ctx.guild.name}.")
-    await ctx.send(f"{ctx.author.name} has been giving the role {role.name}.")
+    await ctx.send(f"{ctx.author.name} has been given the role {role.name}.")
 
 @bot_client.command()
 async def remove_role(ctx, name):
@@ -54,7 +54,7 @@ async def remove_role(ctx, name):
 
 @bot_client.command()
 async def give_role(ctx, member: discord.Member, name):
-    if discord.utils.get(ctx.guild.roles, name="admin") not in ctx.author.roles:
+    if (not ctx.author.guild_permissions.administrator):
         await ctx.send(f"You must be an admin to use this command.")
         return
 
@@ -70,7 +70,7 @@ async def give_role(ctx, member: discord.Member, name):
 
 @bot_client.command()
 async def take_role(ctx, member: discord.Member, name):
-    if discord.utils.get(ctx.guild.roles, name="admin") not in ctx.author.roles:
+    if (not ctx.author.guild_permissions.administrator):
         await ctx.send(f"You must be an admin to use this command.")
         return
 
