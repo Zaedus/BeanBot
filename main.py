@@ -7,6 +7,9 @@ from local import discord_token
 
 bot_client = commands.Bot(command_prefix='?')
 
+@bot_client.command()
+async def cum(ctx):
+    await ctx.send(f"cum")
 
 @bot_client.command()
 @commands.has_permissions(administrator=True)
